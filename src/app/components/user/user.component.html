@@ -1,19 +1,50 @@
-<div class="wrapper">
+<h1>{{name}}</h1>
+<ul>
+	<li>Age: {{age}}</li>
+	<li>Email: {{email}}</li>
+	<li>{{address.street}} {{address.city}}, {{address.zip}}</li>
+</ul>
 
-	<div class="tab">
-		<h2>player: {{players[0]}}</h2> 
-		<h2>Game: {{game.deck}}</h2> 
-		<h4>{{game.card}}</h4>
+<button (click)="onClick()">Click me</button>
+<button (click)="onClick()">Click me</button>
+
+<h1>Edit User</h1>
+<form>
+	<div>
+		<label for="name">Name: </label><br> 
+		<input type="text" [(ngModel)]="name" name="name">
 	</div>
-
-	<div class="tab">
-		<h2>player: {{players[1]}}</h2> 
-		<h2>Game: {{game.deck}}</h2> 
-		<h4>{{game.card}}</h4>
+	<div>
+		<label for="age">Age: </label><br> 
+		<input type="number" [(ngModel)]="age" name="age">
 	</div>
+	<div>
+		<label for="email">Email: </label><br> 
+		<input type="text"[(ngModel)]="email" name="email">
+	</div>
+	<div>
+		<label for="street">Street: </label><br> 
+		<input type="text" [(ngModel)]="address.street" name="street">
+	</div>
+	<div>
+		<label for="city">City: </label><br> 
+		<input type="text" [(ngModel)]="address.city" name="city">
+	</div>
+	<div>
+		<label for="zip">Zip: </label><br> 
+		<input type="text" [(ngModel)]="address.zip" name="zip">
+	</div>
+</form>
 
-
-	<div class="score">Score1</div>
-	<div class="score">Score1</div>
-
-</div>	
+<h1>Hobbies</h1>
+<form (submit)="addHobby(hobby.value)">
+	<div>
+		<label for="">Hobby: </label>
+		<input type="text" #hobby>
+	</div>
+</form>
+<ul>
+	<li *ngFor="let hobby of hobbies; let i = index">
+	{{i+1}}: {{hobby}} <button (click)="deleteHobby(hobby)">x</button>
+	</li>
+</ul>

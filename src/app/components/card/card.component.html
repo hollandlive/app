@@ -1,0 +1,26 @@
+<div class="wrapper">
+
+	<div class="tab">
+		<h2>player: {{players[0]}}</h2> 
+		<h2>Game: {{game.deck}}</h2> 
+		<h4>{{game.card}}</h4>
+		<hr>
+		<h6>My cards</h6>
+		<ul>
+			<li *ngFor="let hand of hands">{{hand}}</li>
+		</ul>
+
+	</div>
+
+	<div class="tab">
+		<h2>player: {{players[1]}}</h2> 
+		<h2>Game: {{game.deck}}</h2> 
+		<h4>{{game.card}}</h4>
+		<hr>
+	</div>
+
+
+	<div class="score">Score1</div>
+	<div class="score">Score1</div>
+
+</div>	

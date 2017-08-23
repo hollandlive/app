@@ -1,51 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+	name:string;
+	age:number;
+	email:string;
+	address:Address;
+	hobbies:string[];
 
-	players:string[]
-	game:Game;
-	
-	constructor() 
-
-
-	{ 
-	console.log('cons run');
+  constructor() { 
+  	console.log('constructor run');
   }
 
   ngOnInit() {
-  	console.log('ngOn run');
-  	this.game = {
-		deck:'decks',
-		card:'cardsss',
-		//hand:[{'gg':'fhf'}]
-
-		
+  	console.log('ngOnInit run');
+  	this.name = 'John';
+  	this.age = 50;
+  	this.address = {
+  		street: '50 main street',
+  		city: 'Amsterdam',
+  		zip: 'Noord Holland'
+  	}
+  	this.hobbies = ['write', 'eat', 'etc'];
+  }
+  onClick(){
+  	this.name = "Artem Aksenob";
+  	this.hobbies.push("New Hobby", "wswsw");
+  }
+  addHobby(hobby){
+  	console.log(hobby);
+  	this.hobbies.unshift(hobby);
+  	return false;
+  }
+  deleteHobby(hobby){
+  	console.log(hobby);
+  	for (let i=0; i<this.hobbies.length; i++) {
+  		if(this.hobbies[i]==hobby) {
+  			this.hobbies.splice(i, 1);
   		}
-  	this.players = ['artem', 'comp'];	
-	}
+  	}
+  }
 }
 
-
-interface Game {
-	deck:string,
-	card:string,
-	//hand:string[]
-	
+interface Address {
+	street:string;
+	city:string;
+	zip:string;
 }
-
-interface Player {
-	name:string;
-}
-
-
-// class Card {
-//     cardString: string;
-//     constructor(public cardFace, public cardSuite, public cardValue, public inagePath) {
-//         this.cardString = cardFace + cardSuite + ".jpg" + " the value of this card is " + cardValue;
-//     }
-//     }
